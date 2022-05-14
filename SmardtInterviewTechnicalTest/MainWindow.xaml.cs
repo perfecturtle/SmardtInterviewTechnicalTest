@@ -29,19 +29,28 @@ namespace SmardtInterviewTechnicalTest
         {
 
             InitializeComponent();
-            //TrendChartTemperature.Series[0].Points.AddXY(DateTime.Now.Minute, 100);
-
-            //TrendChartTemperature.Series[0].Points.AddXY(DateTime.Now.AddMinutes(10).Minute, 150);
-            TrendChartTemperature.Series[0].BorderWidth = 4;
-            TrendChartTemperature.Series[1].BorderWidth = 4;
             TemperatureChartArea.AxisY.Title = "Temperature";
             TemperatureChartArea.AxisX.Title = "Time (Min)";
         }
 
         private void UpdateChart_Click(object sender, RoutedEventArgs e)
         {
-            TrendChartTemperature.Series[0].Points.AddXY(DateTime.Now, MainWindowViewModel.InputTemperature != null ? MainWindowViewModel.InputTemperature : 0);
-            TrendChartTemperature.Series[1].Points.AddXY(DateTime.Now, MainWindowViewModel.TemperatureSetpoint);
+            DateTime CurrentTime = DateTime.Now;
+            int AddInputTemp = MainWindowViewModel.InputTemperature != null ? (int)MainWindowViewModel.InputTemperature : 0;
+            int AddSetPointTemp = MainWindowViewModel.TemperatureSetpoint;
+            .Add(new ChartPoint() { YTemperature = AddInputTemp, XTime = CurrentTime });
+            SetPointTempDataPoints.Add(new ChartPoint() { YTemperature = AddSetPointTemp, XTime = CurrentTime });
+            TrendChartTemperature.Series[0].Points.AddXY(CurrentTime, AddInputTemp);
+            TrendChartTemperature.Series[1].Points.AddXY(CurrentTime, AddSetPointTemp);
+            NumberOfPoints.Maximum = TrendChartTemperature.Series[0].Points.Count();
+            //TrendChartTemperature.Series[1].Points.Remove(TrendChartTemperature.Series[0].Points[0]);
+        }
+        private List<ChartPoint> InputTempDataPoints = new List<ChartPoint>();
+        private List<ChartPoint> SetPointTempDataPoints = new List<ChartPoint>();
+        public class ChartPoint
+        {
+            public int YTemperature { get; set; }
+            public DateTime XTime { get; set; }
         }
     }
 }

@@ -36,9 +36,9 @@
             <Grid Margin="20,20,0,20" >
                 <WindowsFormsHost>
                     <wf:Chart x:Name="TrendChartTemperature">
-                        <wf:Chart.Series >
-                            <wf:Series ChartType="Line" XValueType="Time"/>
-                            <wf:Series ChartType="Line" XValueType="Time"/>
+                        <wf:Chart.Series>
+                            <wf:Series ChartType="Line" XValueType="Time" BorderWidth="4"/>
+                            <wf:Series ChartType="Line" XValueType="Time" BorderWidth="4"/>
                         </wf:Chart.Series>
                         <wf:Chart.ChartAreas>
                             <wf:ChartArea x:Name="TemperatureChartArea"/>
@@ -48,9 +48,10 @@
             </Grid>
             <UniformGrid Columns="3">
                 <Button Click="UpdateChart_Click">Update Chart</Button>
-                <DatePicker/>
-                <DatePicker/>
-               
+                <Slider Visibility="Hidden"/>
+                <Slider x:Name="NumberOfPoints"     IsSnapToTickEnabled="True" Minimum="0"  Maximum="0"  TickFrequency="1" />
+
+
             </UniformGrid>
         </StackPanel>
 
