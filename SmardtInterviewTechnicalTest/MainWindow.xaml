@@ -1,0 +1,80 @@
+﻿<Window x:Class="SmardtInterviewTechnicalTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmardtInterviewTechnicalTest"
+        xmlns:vm="clr-namespace:SmardtInterviewTechnicalTest.ViewModels"
+             xmlns:wf="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--CODE FOR FUNCTION 1-->
+        <StackPanel Grid.Row="0">
+            <!--INPUT CODE-->
+            <TextBlock HorizontalAlignment="Center" FontSize="20">Function 1 INPUTS</TextBlock>
+            <UniformGrid Columns="3">
+                <Label Content="Input Temperature" HorizontalAlignment="Center"/>
+                <Label Content="Temperature setpoint" HorizontalAlignment="Center"/>
+                <Label Content="Temperature setpoint deadband" HorizontalAlignment="Center"/>
+            </UniformGrid>
+            <UniformGrid Columns="3" Rows=" 1">
+                <TextBox Text="{Binding InputTemperature}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox Text="{Binding TemperatureSetpoint}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox Text="{Binding TemperatureSetpointDeadband}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            </UniformGrid>
+            <!--OUTPUT CODE-->
+            <TextBlock HorizontalAlignment="Center" FontSize="20">Function 1 OUTPUTS</TextBlock>
+            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding CoolingBool}" IsHitTestVisible ="False"  FontSize="16" VerticalContentAlignment="Center">Cooling On / Off</CheckBox>
+            <Grid Margin="20,20,0,20" >
+                <WindowsFormsHost>
+                    <wf:Chart x:Name="TrendChartTemperature">
+                        <wf:Chart.Series>
+                            <wf:Series ChartType="Line"/>
+                        </wf:Chart.Series>
+                        <wf:Chart.ChartAreas>
+                            <wf:ChartArea x:Name="TemperatureChartArea"/>
+                        </wf:Chart.ChartAreas>
+                    </wf:Chart>
+                </WindowsFormsHost>
+            </Grid>
+        </StackPanel>
+
+        <!--CODE FOR FUNCTION 2-->
+        <StackPanel Grid.Row="1">
+           
+
+            <TextBlock HorizontalAlignment="Center" FontSize="20">Function 2 INPUTS</TextBlock>
+        <UniformGrid Columns="8">
+            <Label Content="Input 1" HorizontalAlignment="Center"/>
+            <Label Content="Input 2" HorizontalAlignment="Center"/>
+            <Label Content="Input 3" HorizontalAlignment="Center"/>
+            <Label Content="Input 4" HorizontalAlignment="Center"/>
+            <Label Content="Input 5" HorizontalAlignment="Center"/>
+            <Label Content="Input 6" HorizontalAlignment="Center"/>
+            <Label Content="Input 7" HorizontalAlignment="Center"/>
+            <Label Content="Input 8" HorizontalAlignment="Center"/>
+        </UniformGrid>
+        <UniformGrid Columns="8" Rows=" 1">
+           
+            <TextBox Text="{Binding TextInput1, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding TextInput2, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding TextInput3, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding TextInput4, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding TextInput5, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding TextInput6, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding TextInput7, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding TextInput8, UpdateSourceTrigger=PropertyChanged}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            </UniformGrid>
+            <TextBlock HorizontalAlignment="Center" FontSize="20">Function 2 OUTPUTS</TextBlock>
+            <TextBlock Text="{Binding OutputFunction2}" HorizontalAlignment="Center"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
