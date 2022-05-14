@@ -26,9 +26,9 @@
                 <Label Content="Temperature setpoint deadband" HorizontalAlignment="Center"/>
             </UniformGrid>
             <UniformGrid Columns="3" Rows=" 1">
-                <TextBox Text="{Binding InputTemperature}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <TextBox Text="{Binding TemperatureSetpoint}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-                <TextBox Text="{Binding TemperatureSetpointDeadband}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox  Text="{Binding InputTemperature}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox  Text="{Binding TemperatureSetpoint}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+                <TextBox  Text="{Binding TemperatureSetpointDeadband}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </UniformGrid>
             <!--OUTPUT CODE-->
             <TextBlock HorizontalAlignment="Center" FontSize="20">Function 1 OUTPUTS</TextBlock>
@@ -36,8 +36,9 @@
             <Grid Margin="20,20,0,20" >
                 <WindowsFormsHost>
                     <wf:Chart x:Name="TrendChartTemperature">
-                        <wf:Chart.Series>
-                            <wf:Series ChartType="Line"/>
+                        <wf:Chart.Series >
+                            <wf:Series ChartType="Line" XValueType="Time"/>
+                            <wf:Series ChartType="Line" XValueType="Time"/>
                         </wf:Chart.Series>
                         <wf:Chart.ChartAreas>
                             <wf:ChartArea x:Name="TemperatureChartArea"/>
@@ -45,6 +46,12 @@
                     </wf:Chart>
                 </WindowsFormsHost>
             </Grid>
+            <UniformGrid Columns="3">
+                <Button Click="UpdateChart_Click">Update Chart</Button>
+                <DatePicker/>
+                <DatePicker/>
+               
+            </UniformGrid>
         </StackPanel>
 
         <!--CODE FOR FUNCTION 2-->
