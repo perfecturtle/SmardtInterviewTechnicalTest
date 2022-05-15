@@ -30,7 +30,7 @@ namespace SmardtInterviewTechnicalTest
 
             InitializeComponent();
             TemperatureChartArea.AxisY.Title = "Temperature";
-            TemperatureChartArea.AxisX.Title = "Time (Min)";
+            TemperatureChartArea.AxisX.Title = "Time";
         }
 
         private void UpdateChart_Click(object sender, RoutedEventArgs e)
@@ -38,12 +38,12 @@ namespace SmardtInterviewTechnicalTest
             DateTime CurrentTime = DateTime.Now;
             int AddInputTemp = MainWindowViewModel.InputTemperature != null ? (int)MainWindowViewModel.InputTemperature : 0;
             int AddSetPointTemp = MainWindowViewModel.TemperatureSetpoint;
-            .Add(new ChartPoint() { YTemperature = AddInputTemp, XTime = CurrentTime });
+            SetPointTempDataPoints.Add(new ChartPoint() { YTemperature = AddInputTemp, XTime = CurrentTime });
             SetPointTempDataPoints.Add(new ChartPoint() { YTemperature = AddSetPointTemp, XTime = CurrentTime });
             TrendChartTemperature.Series[0].Points.AddXY(CurrentTime, AddInputTemp);
             TrendChartTemperature.Series[1].Points.AddXY(CurrentTime, AddSetPointTemp);
-            NumberOfPoints.Maximum = TrendChartTemperature.Series[0].Points.Count();
-            //TrendChartTemperature.Series[1].Points.Remove(TrendChartTemperature.Series[0].Points[0]);
+            NumberOfPoints.Maximum = InputTempDataPoints.Count();
+         
         }
         private List<ChartPoint> InputTempDataPoints = new List<ChartPoint>();
         private List<ChartPoint> SetPointTempDataPoints = new List<ChartPoint>();
