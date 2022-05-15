@@ -70,16 +70,12 @@
                     </Button.Resources>
                 </Button>
                 <Slider Visibility="Hidden"/>
-                <Slider x:Name="NumberOfPoints"   IsSnapToTickEnabled="True" Minimum="0"  Maximum="0"  TickFrequency="1" />
-
-
+                <Slider x:Name="NumberOfPoints" ValueChanged="Slider_ValueChanged"   IsSnapToTickEnabled="True" Minimum="0"  Maximum="0"  TickFrequency="1" />
             </UniformGrid>
         </StackPanel>
 
         <!--CODE FOR FUNCTION 2-->
         <StackPanel Grid.Row="1">
-
-
             <Label HorizontalAlignment="Center" FontSize="20" BorderBrush="Aquamarine" BorderThickness="2">Function 2 INPUTS</Label>
         <UniformGrid Columns="8">
             <Label Content="Input 1" HorizontalAlignment="Center"/>
@@ -91,9 +87,8 @@
             <Label Content="Input 7" HorizontalAlignment="Center"/>
             <Label Content="Input 8" HorizontalAlignment="Center"/>
         </UniformGrid>
-        <UniformGrid Columns="8" Rows=" 1">
-           
-            <TextBox Text="{Binding TextInput1, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource NullTextTextBox}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <UniformGrid Columns="8" Rows=" 1">
+                <TextBox Text="{Binding TextInput1, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource NullTextTextBox}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <TextBox Text="{Binding TextInput2, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource NullTextTextBox}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <TextBox Text="{Binding TextInput3, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource NullTextTextBox}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <TextBox Text="{Binding TextInput4, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource NullTextTextBox}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -102,8 +97,9 @@
                 <TextBox Text="{Binding TextInput7, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource NullTextTextBox}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
                 <TextBox Text="{Binding TextInput8, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource NullTextTextBox}" BorderThickness="1" Height= "50" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </UniformGrid>
+            <!--OUTPUT CODE-->
             <Label HorizontalAlignment="Center" FontSize="20" BorderBrush="Aquamarine" BorderThickness="2">Function 2 OUTPUTS</Label>
-            <Label Content="{Binding OutputFunction2}" HorizontalAlignment="Center"></Label>
+            <Label Content="{Binding OutputFunction2}" FontSize="25" HorizontalAlignment="Center"></Label>
         </StackPanel>
     </Grid>
 </Window>

@@ -15,7 +15,8 @@ namespace SmardtInterviewTechnicalTest.ViewModels
         public int? InputTemperature
         {
             get { return _InputTemperature; }
-            set {
+            set
+            {
                 _InputTemperature = value;
                 if (value != null)
                 {
@@ -28,7 +29,8 @@ namespace SmardtInterviewTechnicalTest.ViewModels
                         CoolingBool = false;
                     }
                 }
-                NotifyPropertyChanged(nameof(InputTemperature)); }
+                NotifyPropertyChanged(nameof(InputTemperature));
+            }
         }
         private int _TemperatureSetpoint;
         public int TemperatureSetpoint
@@ -179,20 +181,16 @@ namespace SmardtInterviewTechnicalTest.ViewModels
         public MainWindowViewModel()
         {
             Function1();
-            Function2();
         }
         private void Function1()
         {
-            //initialise defaults
+            //initialise default values for function 1
             TemperatureSetpoint = 22;
             TemperatureSetpointDeadband = 2;
         }
-        private void Function2()
-        {
-           
-        }
         private void UpdateF2List()
         {
+            //adds all the inputs to a list, then filters for the right results in that list with linq
             ListFunction2 = new List<int>();
             ListFunction2.Add(TextInput1);
             ListFunction2.Add(TextInput2);
@@ -202,7 +200,7 @@ namespace SmardtInterviewTechnicalTest.ViewModels
             ListFunction2.Add(TextInput6);
             ListFunction2.Add(TextInput7);
             ListFunction2.Add(TextInput8);
-            ListFunction2 = ListFunction2.Where(x => x <= 100).OrderByDescending(x=> (uint)x).ToList().GetRange(0, 3);
+            ListFunction2 = ListFunction2.Where(x => x <= 100).OrderByDescending(x => (uint)x).ToList().GetRange(0, 3);
             OutputFunction2 = $"{ListFunction2[0]}, {ListFunction2[1]}, {ListFunction2[2]}";
         }
         public event PropertyChangedEventHandler PropertyChanged;
